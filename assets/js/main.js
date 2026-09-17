@@ -4,7 +4,7 @@
  * Until then, forms run in "demo mode" and just go to the thank-you page.
  */
 const SITE_CONFIG = {
-  formEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
+  formEndpoint: "https://formspree.io/f/xyezynnp",
 };
 
 (function () {
