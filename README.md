@@ -40,7 +40,7 @@ In **Settings → Pages → Custom domain**, enter your domain. GitHub adds a `C
 ## 3. Before you run traffic
 
 - [ ] Paste your Formspree endpoint (step 1).
-- [ ] Add your phone and email in the footer (search for `CONTACT:`).
+- [x] Phone and email added to the footer.
 - [ ] Add Google Analytics and/or Meta Pixel where you see `ANALYTICS:` in each page. Forms already fire `generate_lead` (GA4) and `Lead` (Meta) events when those scripts are present.
 - [ ] Have an attorney review `privacy.html`, `terms.html`, and the consent checkbox wording (TCPA / texting rules), especially since leads are shared with partners.
 - [ ] Make sure the agents and lenders you refer to are properly licensed. Referral fees in real estate are regulated (e.g., RESPA and state license law).
