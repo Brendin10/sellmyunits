@@ -1,4 +1,4 @@
-# Forecast Plus — Multifamily Lead Funnel
+# sellmyunits.com — Multifamily Lead Funnel
 
 A static lead-generation site for duplex and multifamily (2+ unit) buyers, sellers, and owners in Northern Indiana and Chicagoland. It's plain HTML, CSS, and JS with no build step, and it's ready for GitHub Pages.
 

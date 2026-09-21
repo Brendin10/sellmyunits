@@ -1,4 +1,4 @@
-/* Forecast Plus — site scripts
+/* sellmyunits.com — site scripts
  * ------------------------------------------------------------
  * SETUP: paste your Formspree endpoint below (see README.md).
  * Until then, forms run in "demo mode" and just go to the thank-you page.
@@ -138,7 +138,7 @@ const SITE_CONFIG = {
       const endpoint = SITE_CONFIG.formEndpoint;
 
       if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
-        console.warn("[Forecast Plus] Demo mode: set SITE_CONFIG.formEndpoint in assets/js/main.js to receive leads.");
+        console.warn("[sellmyunits.com] Demo mode: set SITE_CONFIG.formEndpoint in assets/js/main.js to receive leads.");
         console.table(Object.fromEntries(data.entries()));
         location.href = thanks + "&demo=1";
         return;
