@@ -34,8 +34,21 @@ git push -u origin main
 
 Then on GitHub, go to **Settings → Pages → Build and deployment**, set **Source: Deploy from a branch** and **Branch: `main` / root**, and save. The site goes live at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
 
-### Custom domain (optional)
-In **Settings → Pages → Custom domain**, enter your domain. GitHub adds a `CNAME` file for you. At your DNS provider, point the domain to GitHub Pages. Then replace `https://www.example.com` in every page's `<head>`, in `sitemap.xml`, and in `robots.txt` with your real domain.
+### Custom domain
+The site uses www.sellmyunits.com. See the custom domain section below.
+
+## Custom domain: www.sellmyunits.com
+The `CNAME` file tells GitHub Pages to serve the site at **www.sellmyunits.com**. The bare sellmyunits.com redirects to it automatically once the DNS records below are in place.
+
+DNS records at Domain.com:
+
+| Type | Host | Points to |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | brendin10.github.io |
 
 ## 3. Before you run traffic
 
