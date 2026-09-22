@@ -11,7 +11,6 @@ A static lead-generation site for duplex and multifamily (2+ unit) buyers, selle
 | `sell.html` | Owners who want to sell | `seller` |
 | `value.html` | Free value and rent estimate (strongest owner magnet) | `valuation` |
 | `house-hack.html` | Owner-occupant 2–4 unit buyers | `house-hack` |
-| `calculator.html` | Quick value calculator: specs, rents, nearby listings | `calculator` |
 | `thank-you.html` | Confirmation page, personalized by lead type | — |
 | `privacy.html`, `terms.html` | Legal templates (**have an attorney review**) | — |
 
@@ -58,10 +57,6 @@ DNS records at Domain.com:
 - [ ] Add Google Analytics and/or Meta Pixel where you see `ANALYTICS:` in each page. Forms already fire `generate_lead` (GA4) and `Lead` (Meta) events when those scripts are present.
 - [ ] Have an attorney review `privacy.html`, `terms.html`, and the consent checkbox wording (TCPA / texting rules), especially since leads are shared with partners.
 - [ ] Make sure the agents and lenders you refer to are properly licensed. Referral fees in real estate are regulated (e.g., RESPA and state license law).
-
-## Quick value calculator
-
-`calculator.html` estimates a rough range from the owner's rents (gross rent multiplier) and, once connected, from active 2+ unit listings near the address (price per sq ft and per bedroom). The nearby-listings lookup needs a RentCast API key behind a free Cloudflare Worker. Setup steps are in `cloudflare-worker/README.md`. Until then, the lookup button stays hidden.
 
 ## Editing
 
