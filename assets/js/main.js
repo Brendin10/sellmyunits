@@ -171,6 +171,7 @@ const SITE_CONFIG = {
       buyer: "We're matching your criteria with a local professional who works 2–4 unit and apartment deals. Expect a call or text shortly.",
       seller: "A local multifamily specialist will reach out to talk through your building, your timeline, and your options.",
       valuation: "We're lining up a local pro to prepare your value and rent estimate. They may reach out with a few quick questions about the building.",
+      calculator: "Thanks for sharing your numbers. A local multifamily pro will review them and reach out with a clearer picture of your building's value.",
       "house-hack": "A local pro who works with owner-occupant buyers will reach out to walk through financing options and the next steps.",
     };
     const t = params.get("type");
