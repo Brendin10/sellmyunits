@@ -97,6 +97,8 @@ p { margin: 0 0 1em; }
 .path-card p { color: var(--ink-soft); font-size: .95rem; flex: 1; }
 .path-card .go { font-weight: 600; color: var(--brick-dark); }
 
+.paths-aside { margin: 18px 0 0; color: var(--muted); font-size: .95rem; }
+
 /* Steps / features */
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }

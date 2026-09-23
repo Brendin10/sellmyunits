@@ -8,9 +8,8 @@ A static lead-generation site for duplex and multifamily (2+ unit) buyers, selle
 |---|---|---|
 | `index.html` | Home hub with four paths and a quick form | `general` |
 | `buy.html` | Buyers of 2+ unit properties | `buyer` |
-| `sell.html` | Owners who want to sell | `seller` |
+| `sell.html` | Owners selling one building, several houses, or a portfolio | `seller` |
 | `value.html` | Free value and rent estimate (strongest owner magnet) | `valuation` |
-| `house-hack.html` | Owner-occupant 2–4 unit buyers | `house-hack` |
 | `thank-you.html` | Confirmation page, personalized by lead type | — |
 | `privacy.html`, `terms.html` | Legal templates (**have an attorney review**) | — |
 

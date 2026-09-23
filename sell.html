@@ -26,7 +26,7 @@
   <nav class="container nav" aria-label="Main">
     <a class="brand" href="index.html"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em><small>Multifamily · IN &amp; IL</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="nav-links"><li><a href="buy.html">Buy</a></li><li><a href="sell.html" aria-current="page">Sell</a></li><li><a href="value.html">Free Valuation</a></li><li><a href="house-hack.html">House Hack</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
+    <ul class="nav-links" id="nav-links"><li><a href="sell.html" aria-current="page">Sell</a></li><li><a href="value.html">Free Valuation</a></li><li><a href="sell.html#portfolio">Portfolios</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
   </nav>
 </header>
 <main id="main">
@@ -40,16 +40,19 @@
       <ul class="checklist"><li>Duplexes through larger apartment buildings</li><li>Portfolios: several rental houses or multiple buildings, sold together or one at a time</li><li>Options for listing, off-market, or direct sale</li><li>Tenant-occupied and value-add properties welcome</li><li>Help thinking through 1031 exchange timing</li></ul>
       <h2 style="margin-top:36px;font-size:1.5rem">What happens next</h2><div class="grid-2" style="margin-top:14px"><div class="step"><div class="step-num">1</div><h3>Review</h3><p>A specialist looks at your building, rents, and local sales.</p></div><div class="step"><div class="step-num">2</div><h3>Options</h3><p>You compare paths and timelines, then choose what fits.</p></div></div>
     </div>
-    <div class="form-card" id="form">
+    <div class="form-card" id="form"><a id="portfolio"></a>
 <h2>Explore selling your building</h2>
 <p class="sub">Get your options. There's no obligation.</p>
 <div class="progress" aria-hidden="true"><span></span><span></span><span></span></div>
 <p class="step-label">Step 1 of 3</p>
-<form class="lead-form" novalidate>
+<form class="lead-form" novalidate data-branch="sale_type">
 <input type="hidden" name="lead_type" value="seller">
 <input type="hidden" name="_subject" value="New seller lead — sellmyunits.com">
 <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-<fieldset class="form-step"><legend>About the property</legend>
+<fieldset class="form-step"><legend>What are you selling?</legend><div class="field"><span class="label" id="lbl-sale_type">I'm looking to sell…</span>
+<div class="options" role="radiogroup" aria-labelledby="lbl-sale_type"><label class="option"><input type="radio" name="sale_type" value="One building (2+ units)" data-branch-value="single" data-preset="single" required><span>One building (2+ units)</span></label><label class="option"><input type="radio" name="sale_type" value="Multiple buildings" data-branch-value="multi" data-preset="buildings" required><span>Multiple buildings</span></label><label class="option"><input type="radio" name="sale_type" value="Several rental houses" data-branch-value="multi" data-preset="houses" required><span>Several rental houses</span></label><label class="option"><input type="radio" name="sale_type" value="Mixed portfolio (houses + buildings)" data-branch-value="multi" data-preset="portfolio" required><span>Mixed portfolio (houses + buildings)</span></label></div>
+<p class="error-msg">Please choose one.</p></div>
+<div data-when="single">
 <div class="field"><label for="address">Property address</label>
 <input id="address" name="address" type="text" required autocomplete="street-address">
 <p class="error-msg">Please enter a valid property address.</p></div><div class="row-2"><div class="field"><label for="city">City</label>
@@ -59,7 +62,20 @@
 <p class="error-msg">Please make a selection.</p></div></div><div class="field"><span class="label" id="lbl-units">Number of units</span>
 <div class="options" role="radiogroup" aria-labelledby="lbl-units"><label class="option"><input type="radio" name="units" value="Duplex (2)" required><span>Duplex (2)</span></label><label class="option"><input type="radio" name="units" value="3–4 units" required><span>3–4 units</span></label><label class="option"><input type="radio" name="units" value="5–20 units" required><span>5–20 units</span></label><label class="option"><input type="radio" name="units" value="21+ units" required><span>21+ units</span></label><label class="option"><input type="radio" name="units" value="Portfolio (multiple properties)" required><span>Portfolio (multiple properties)</span></label></div>
 <p class="error-msg">Please choose one.</p></div>
-<div class="form-nav"><button type="button" class="btn btn-primary" data-next>Continue</button></div></fieldset>
+</div>
+<div data-when="multi">
+<div class="row-2"><div class="field"><label for="s_count">How many properties?</label>
+<select id="s_count" name="property_count" required><option value="">Select…</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6–10</option><option>11+</option></select>
+<p class="error-msg">Please make a selection.</p></div><div class="field"><label for="s_total">Total units <span class="hint">(all properties)</span></label>
+<input id="s_total" name="total_units" type="number" inputmode="numeric" min="1" required placeholder="e.g. 9">
+<p class="error-msg">Please enter the total number of units.</p></div></div>
+<div class="field"><label for="s_area">Where are they?</label>
+<select id="s_area" name="area" required><option value="">Select…</option><option>Northwest Indiana</option><option>Michiana / South Bend area</option><option>Chicago (city)</option><option>Chicago suburbs</option><option>Other / not sure</option></select>
+<p class="error-msg">Please make a selection.</p></div>
+<div class="field"><label for="s_list">The properties <span class="hint">(one address per line, or a short description)</span></label>
+<textarea id="s_list" name="property_list" required placeholder="1234 Oak Ave, Hammond IN — duplex&#10;908 Elm St, Gary IN — single family"></textarea>
+<p class="error-msg">Please list the properties.</p></div>
+</div><div class="form-nav"><button type="button" class="btn btn-primary" data-next>Continue</button></div></fieldset>
 <fieldset class="form-step"><legend>Your situation</legend>
 <div class="field"><span class="label" id="lbl-timeline">When would you like to sell?</span>
 <div class="options" role="radiogroup" aria-labelledby="lbl-timeline"><label class="option"><input type="radio" name="timeline" value="ASAP" required><span>ASAP</span></label><label class="option"><input type="radio" name="timeline" value="1–3 months" required><span>1–3 months</span></label><label class="option"><input type="radio" name="timeline" value="3–12 months" required><span>3–12 months</span></label><label class="option"><input type="radio" name="timeline" value="Just exploring" required><span>Just exploring</span></label></div>
@@ -67,8 +83,10 @@
 <select id="occupancy" name="occupancy" required><option value="">Select…</option><option>Fully occupied</option><option>Partially vacant</option><option>Mostly vacant</option><option>Owner-occupied</option></select>
 <p class="error-msg">Please make a selection.</p></div><div class="field"><label for="condition">Overall condition</label>
 <select id="condition" name="condition" required><option value="">Select…</option><option>Updated / turnkey</option><option>Average</option><option>Needs some work</option><option>Needs major work</option></select>
-<p class="error-msg">Please make a selection.</p></div><div class="field"><span class="label" id="lbl-sale_type">What matters most?</span>
-<div class="options" role="radiogroup" aria-labelledby="lbl-sale_type"><label class="option"><input type="radio" name="sale_type" value="Top dollar" required><span>Top dollar</span></label><label class="option"><input type="radio" name="sale_type" value="Speed / certainty" required><span>Speed / certainty</span></label><label class="option"><input type="radio" name="sale_type" value="Selling as-is" required><span>Selling as-is</span></label><label class="option"><input type="radio" name="sale_type" value="Not sure" required><span>Not sure</span></label></div>
+<p class="error-msg">Please make a selection.</p></div><div class="field" data-when="multi"><span class="label" id="lbl-sell_together">Sell them together or one at a time?</span>
+<div class="options cols-3" role="radiogroup" aria-labelledby="lbl-sell_together"><label class="option"><input type="radio" name="sell_together" value="Together as a package" required><span>Together</span></label><label class="option"><input type="radio" name="sell_together" value="One at a time" required><span>One at a time</span></label><label class="option"><input type="radio" name="sell_together" value="Whichever nets more" required><span>Whichever nets more</span></label></div>
+<p class="error-msg">Please choose one.</p></div><div class="field"><span class="label" id="lbl-priority">What matters most?</span>
+<div class="options" role="radiogroup" aria-labelledby="lbl-priority"><label class="option"><input type="radio" name="priority" value="Top dollar" required><span>Top dollar</span></label><label class="option"><input type="radio" name="priority" value="Speed / certainty" required><span>Speed / certainty</span></label><label class="option"><input type="radio" name="priority" value="Selling as-is" required><span>Selling as-is</span></label><label class="option"><input type="radio" name="priority" value="Not sure" required><span>Not sure</span></label></div>
 <p class="error-msg">Please choose one.</p></div>
 <div class="form-nav"><button type="button" class="btn btn-ghost" data-back>Back</button><button type="button" class="btn btn-primary" data-next>Continue</button></div></fieldset>
 <fieldset class="form-step"><legend>Where should we send it?</legend>
@@ -113,7 +131,6 @@
           <li><a href="buy.html">Buy a multifamily</a></li>
           <li><a href="sell.html">Sell your building</a></li>
           <li><a href="value.html">Free value &amp; rent estimate</a></li>
-          <li><a href="house-hack.html">House hacking</a></li>
         </ul>
       </div>
       <div>

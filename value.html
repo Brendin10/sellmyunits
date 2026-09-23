@@ -26,7 +26,7 @@
   <nav class="container nav" aria-label="Main">
     <a class="brand" href="index.html"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em><small>Multifamily · IN &amp; IL</small></span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="nav-links"><li><a href="buy.html">Buy</a></li><li><a href="sell.html">Sell</a></li><li><a href="value.html" aria-current="page">Free Valuation</a></li><li><a href="house-hack.html">House Hack</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
+    <ul class="nav-links" id="nav-links"><li><a href="sell.html">Sell</a></li><li><a href="value.html" aria-current="page">Free Valuation</a></li><li><a href="sell.html#portfolio">Portfolios</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
   </nav>
 </header>
 <main id="main">
@@ -45,11 +45,14 @@
 <p class="sub">Value and rent estimate for your 2+ unit property.</p>
 <div class="progress" aria-hidden="true"><span></span><span></span><span></span></div>
 <p class="step-label">Step 1 of 3</p>
-<form class="lead-form" novalidate>
+<form class="lead-form" novalidate data-branch="property_scope">
 <input type="hidden" name="lead_type" value="valuation">
 <input type="hidden" name="_subject" value="New valuation lead — sellmyunits.com">
 <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-<fieldset class="form-step"><legend>Which property?</legend>
+<fieldset class="form-step"><legend>What would you like valued?</legend><div class="field"><span class="label" id="lbl-scope">How many properties?</span>
+<div class="options" role="radiogroup" aria-labelledby="lbl-scope"><label class="option"><input type="radio" name="property_scope" value="One property" data-branch-value="single" data-preset="single" required><span>One property</span></label><label class="option"><input type="radio" name="property_scope" value="More than one" data-branch-value="multi" data-preset="portfolio" required><span>More than one</span></label></div>
+<p class="error-msg">Please choose one.</p></div>
+<div data-when="single">
 <div class="field"><label for="address">Property address</label>
 <input id="address" name="address" type="text" required autocomplete="street-address">
 <p class="error-msg">Please enter a valid property address.</p></div><div class="row-2"><div class="field"><label for="city">City</label>
@@ -59,7 +62,20 @@
 <p class="error-msg">Please enter a valid zip.</p></div></div><div class="field"><span class="label" id="lbl-units">Number of units</span>
 <div class="options" role="radiogroup" aria-labelledby="lbl-units"><label class="option"><input type="radio" name="units" value="Duplex (2)" required><span>Duplex (2)</span></label><label class="option"><input type="radio" name="units" value="3–4 units" required><span>3–4 units</span></label><label class="option"><input type="radio" name="units" value="5–20 units" required><span>5–20 units</span></label><label class="option"><input type="radio" name="units" value="21+ units" required><span>21+ units</span></label><label class="option"><input type="radio" name="units" value="Portfolio (multiple properties)" required><span>Portfolio (multiple properties)</span></label></div>
 <p class="error-msg">Please choose one.</p></div>
-<div class="form-nav"><button type="button" class="btn btn-primary" data-next>Continue</button></div></fieldset>
+</div>
+<div data-when="multi">
+<div class="row-2"><div class="field"><label for="v_count">How many properties?</label>
+<select id="v_count" name="property_count" required><option value="">Select…</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6–10</option><option>11+</option></select>
+<p class="error-msg">Please make a selection.</p></div><div class="field"><label for="v_total">Total units <span class="hint">(all properties)</span></label>
+<input id="v_total" name="total_units" type="number" inputmode="numeric" min="1" required placeholder="e.g. 9">
+<p class="error-msg">Please enter the total number of units.</p></div></div>
+<div class="field"><label for="v_area">Where are they?</label>
+<select id="v_area" name="area" required><option value="">Select…</option><option>Northwest Indiana</option><option>Michiana / South Bend area</option><option>Chicago (city)</option><option>Chicago suburbs</option><option>Other / not sure</option></select>
+<p class="error-msg">Please make a selection.</p></div>
+<div class="field"><label for="v_list">The properties <span class="hint">(one address per line, or a short description)</span></label>
+<textarea id="v_list" name="property_list" required placeholder="1234 Oak Ave, Hammond IN — duplex&#10;908 Elm St, Gary IN — single family"></textarea>
+<p class="error-msg">Please list the properties.</p></div>
+</div><div class="form-nav"><button type="button" class="btn btn-primary" data-next>Continue</button></div></fieldset>
 <fieldset class="form-step"><legend>A little more detail</legend>
 <div class="field"><label for="monthly_rent">Total monthly rent <span class="hint">(optional, all units)</span></label>
 <input id="monthly_rent" name="monthly_rent" type="text" inputmode="decimal" placeholder="$">
@@ -111,7 +127,6 @@
           <li><a href="buy.html">Buy a multifamily</a></li>
           <li><a href="sell.html">Sell your building</a></li>
           <li><a href="value.html">Free value &amp; rent estimate</a></li>
-          <li><a href="house-hack.html">House hacking</a></li>
         </ul>
       </div>
       <div>

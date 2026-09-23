@@ -43,6 +43,22 @@ const SITE_CONFIG = {
     const status = form.querySelector(".form-status");
     let current = 0;
 
+    // Conditional blocks: [data-when] shows only when the form's data-branch field matches.
+    // Hidden blocks are disabled too, so validation and the submitted data ignore them.
+    const branchName = form.dataset.branch;
+    function applyBranch() {
+      if (!branchName) return;
+      const picked = form.querySelector(`input[name="${CSS.escape(branchName)}"]:checked`);
+      const val = picked ? (picked.dataset.branchValue || picked.value) : "";
+      form.querySelectorAll("[data-when]").forEach((el) => {
+        const on = el.dataset.when.split("|").includes(val);
+        el.hidden = !on;
+        el.querySelectorAll("input, select, textarea").forEach((f) => { f.disabled = !on; });
+        if (!on) el.querySelectorAll(".invalid").forEach((w) => w.classList.remove("invalid"));
+      });
+    }
+    form.addEventListener("change", (e) => { if (branchName && e.target.name === branchName) applyBranch(); });
+
     function show(i) {
       steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
       bars.forEach((b, idx) => b.classList.toggle("on", idx <= i));
@@ -57,7 +73,7 @@ const SITE_CONFIG = {
       let firstBad = null;
       // Radio groups marked required
       const groups = new Set();
-      step.querySelectorAll("input[type=radio][required]").forEach((r) => groups.add(r.name));
+      step.querySelectorAll("input[type=radio][required]").forEach((r) => { if (!r.disabled) groups.add(r.name); });
       groups.forEach((name) => {
         const checked = step.querySelector(`input[name="${CSS.escape(name)}"]:checked`);
         const wrap = fieldWrap(step.querySelector(`input[name="${CSS.escape(name)}"]`));
@@ -65,7 +81,7 @@ const SITE_CONFIG = {
         if (!checked) { ok = false; firstBad = firstBad || step.querySelector(`input[name="${CSS.escape(name)}"]`); }
       });
       step.querySelectorAll("input:not([type=radio]), select, textarea").forEach((el) => {
-        if (el.closest(".hp")) return;
+        if (el.closest(".hp") || el.disabled) return;
         let valid = el.checkValidity();
         if (valid && el.type === "tel" && el.value.trim()) {
           valid = el.value.replace(/\D/g, "").length >= 10;
@@ -161,6 +177,12 @@ const SITE_CONFIG = {
       }
     });
 
+    applyBranch();
+    const preset = params.get("type");
+    if (preset) {
+      const opt = form.querySelector(`input[data-preset="${CSS.escape(preset)}"]`);
+      if (opt) { opt.checked = true; applyBranch(); }
+    }
     show(0);
   }
 
@@ -171,7 +193,6 @@ const SITE_CONFIG = {
       buyer: "We're matching your criteria with a local professional who works 2–4 unit and apartment deals. Expect a call or text shortly.",
       seller: "A local multifamily specialist will reach out to talk through your building, your timeline, and your options.",
       valuation: "We're lining up a local pro to prepare your value and rent estimate. They may reach out with a few quick questions about the building.",
-      "house-hack": "A local pro who works with owner-occupant buyers will reach out to walk through financing options and the next steps.",
     };
     const t = params.get("type");
     if (msgs[t]) thanksMsg.textContent = msgs[t];
