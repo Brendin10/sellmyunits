@@ -119,7 +119,7 @@ p { margin: 0 0 1em; }
 .chips li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .88rem; color: var(--ink-soft); }
 
 /* Property types */
-.types { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.types { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
 .type { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 14px; }
 .type strong { display: block; font-family: var(--serif); font-size: 1.6rem; color: var(--navy); }
 .type span { color: var(--muted); font-size: .9rem; }
