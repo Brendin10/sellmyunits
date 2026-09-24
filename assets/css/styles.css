@@ -115,7 +115,7 @@ p { margin: 0 0 1em; }
 .checklist li::before { content: ""; position: absolute; left: 0; top: 15px; width: 18px; height: 18px; border-radius: 50%; background: var(--brick) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M8 13.2 4.8 10l-1.1 1.1L8 15.4l8.3-8.3-1.1-1.1z'/%3E%3C/svg%3E") center/14px no-repeat; }
 
 /* Areas */
-.areas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
 .area { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
 .chips li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .88rem; color: var(--ink-soft); }
