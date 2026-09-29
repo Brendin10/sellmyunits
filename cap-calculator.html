@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cap Calculator | Cap Rate &amp; Value for Apartments, Houses &amp; Storage | sellmyunits.com</title>
+<meta name="description" content="Work out the cap rate and value of an apartment building, rental houses, or a self-storage facility. Free, instant, and nothing leaves your browser.">
+<link rel="canonical" href="https://www.sellmyunits.com/cap-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Cap Calculator | sellmyunits.com">
+<meta property="og:description" content="Work out the cap rate and value of an apartment building, rental houses, or a self-storage facility. Free, instant, and nothing leaves your browser.">
+<meta property="og:url" content="https://www.sellmyunits.com/cap-calculator.html">
+<meta property="og:image" content="https://www.sellmyunits.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1c3550">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<!-- ANALYTICS: paste Google Analytics / Meta Pixel snippets here (see README) -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Main">
+    <a class="brand" href="index.html"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em><small>Multifamily · IN · MI · WI</small></span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links"><li><a href="sell.html">Sell</a></li><li><a href="value.html">Free Valuation</a></li><li><a href="cap-calculator.html" aria-current="page">Cap Calculator</a></li><li><a href="sell.html#portfolio">Portfolios</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="section" aria-labelledby="cc-h">
+  <div class="container">
+    <div class="cc-head">
+      <span class="eyebrow">Free tool · Nothing leaves your browser</span>
+      <h1 id="cc-h">The Cap Calculator</h1>
+      <p class="lede">Put in what the property collects and what it costs to run. You'll get your net operating income, what it's worth at any cap rate, and the cap rate on a price you've been quoted. Apartments, rental houses and self-storage each work differently, so each one has its own calculator.</p>
+    </div>
+
+    <div class="cc" id="capcalc">
+
+      <div class="cc-tabs" role="tablist" aria-label="Property type">
+        <button type="button" class="cc-tab on" data-type="apt" role="tab" aria-selected="true">Apartments</button>
+        <button type="button" class="cc-tab" data-type="house" role="tab" aria-selected="false">Rental houses</button>
+        <button type="button" class="cc-tab" data-type="storage" role="tab" aria-selected="false">Self-storage</button>
+      </div>
+
+      <div class="cc-body">
+        <div class="cc-inputs">
+
+          <div class="cc-block">
+            <h2 class="cc-h3" id="ccRowsLabel">Unit type</h2>
+            <div class="cc-rowhead" id="ccRowHead"></div>
+            <div id="ccRows"></div>
+            <button type="button" class="btn btn-ghost btn-sm cc-add" id="ccAdd">+ Add a row</button>
+          </div>
+
+          <div class="cc-block">
+            <div class="cc-field">
+              <label for="ccLoss"><span id="ccLossLabel">Vacancy</span> <output id="ccLossOut" class="cc-out">6%</output></label>
+              <input type="range" id="ccLoss" min="0" max="40" step="1" value="6">
+              <p class="cc-help" id="ccLossHelp"></p>
+            </div>
+            <div class="cc-field">
+              <label for="ccOther"><span id="ccOtherLabel">Other income</span> <span class="cc-unit">$ / month</span></label>
+              <input type="number" id="ccOther" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help" id="ccOtherHelp"></p>
+            </div>
+          </div>
+
+          <div class="cc-block">
+            <div class="cc-blockhead">
+              <h2 class="cc-h3">Operating expenses</h2>
+              <label class="cc-switch"><input type="checkbox" id="ccDetailed"><span>Enter my actual expenses</span></label>
+            </div>
+
+            <div id="ccSimpleBox">
+              <div class="cc-field">
+                <label for="ccExp">Share of collected income <output id="ccExpOut" class="cc-out">40%</output></label>
+                <input type="range" id="ccExp" min="10" max="70" step="1" value="40">
+                <p class="cc-help" id="ccExpHelp"></p>
+              </div>
+            </div>
+
+            <div id="ccDetailBox" hidden>
+              <div class="cc-lines" id="ccLines"></div>
+              <p class="cc-help">Yearly dollars. Leave anything you don't pay at zero.</p>
+            </div>
+
+            <p class="cc-warn">Operating expenses never include your mortgage, depreciation, or big capital projects like a roof. Leaving those out is what makes it a cap rate.</p>
+          </div>
+
+          <div class="cc-block">
+            <h2 class="cc-h3">The cap rate</h2>
+            <div class="cc-field">
+              <label for="ccCap">Cap rate buyers are using <output id="ccCapOut" class="cc-out">9.0%</output></label>
+              <input type="range" id="ccCap" min="4" max="14" step="0.1" value="9">
+              <p class="cc-help">Not sure? Leave it where it is. Cap rates move by market, building condition and tenant quality &mdash; a local pro will tell you what's actually trading near you.</p>
+            </div>
+            <div class="cc-field">
+              <label for="ccPrice">Been quoted a price? <span class="cc-unit">optional</span></label>
+              <input type="number" id="ccPrice" inputmode="decimal" min="0" step="1000" placeholder="$0">
+              <p class="cc-help">Put in an offer or asking price and we'll show you the cap rate it works out to.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="cc-out-panel" id="ccOut" aria-live="polite">
+          <div class="cc-result">
+            <small>NET OPERATING INCOME</small>
+            <b id="ccNoi">—</b>
+            <span>per year, before the mortgage</span>
+          </div>
+
+          <div class="cc-result cc-value">
+            <small>WORTH ABOUT</small>
+            <b id="ccValue">—</b>
+            <span id="ccRange"></span>
+          </div>
+
+          <div class="cc-capres" id="ccCapResult" hidden>
+            <small>THAT PRICE IS A</small>
+            <b id="ccCapCalc">—</b>
+            <span id="ccCapCalcNote"></span>
+          </div>
+
+          <div class="cc-stats" id="ccStats"></div>
+          <div class="cc-break" id="ccBreak"></div>
+          <p class="cc-typenote" id="ccTypeNote"></p>
+
+          <a class="btn btn-primary cc-cta" id="ccHandoff" href="sell.html">Get a real estimate &rarr;</a>
+          <p class="cc-ctanote">Sends these numbers along with your request, so nobody has to ask you twice. Free, no obligation.</p>
+        </aside>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="cc-how">
+  <div class="container">
+    <div class="section-head"><h2 id="cc-how">Why each one is different</h2><p>The arithmetic is the same. What goes into it isn't.</p></div>
+    <div class="areas">
+      <div class="area">
+        <h3>Apartments</h3>
+        <p>Priced almost purely on income, so the cap rate does nearly all the work. Watch the vacancy number: buyers use a market vacancy rate, not the one you happen to have this month.</p>
+      </div>
+      <div class="area">
+        <h3>Rental houses</h3>
+        <p>Expenses run higher per dollar of rent, because it's one roof and one furnace per tenant instead of one per building. Houses also get valued on what an owner-occupant would pay, so treat the income number as your floor rather than your ceiling.</p>
+      </div>
+      <div class="area">
+        <h3>Self-storage</h3>
+        <p>Judged on occupancy rather than vacancy, and other income matters more than anywhere else &mdash; late fees, tenant protection, locks and boxes. Expenses run lower, with no plumbing in the units and almost nothing to make ready between tenants.</p>
+      </div>
+    </div>
+    <p class="cc-disclaim">This calculator is a rule-of-thumb tool, not an appraisal. The starting percentages are common ranges, not local market data, and every building prices differently. Get a real estimate before you make a decision on it.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="color:#fff"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em></span></a>
+        <p style="margin-top:14px">Connecting multifamily buyers and owners across Indiana, Michigan and Wisconsin with local professionals who focus on 2+ unit properties.</p>
+        <p><a href="tel:+15747809499">(574) 780-9499</a><br><a href="mailto:forecastplusllc@gmail.com">forecastplusllc@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="buy.html">Buy a multifamily</a></li>
+          <li><a href="sell.html">Sell your building</a></li>
+          <li><a href="value.html">Free value &amp; rent estimate</a></li>
+          <li><a href="cap-calculator.html">The Cap Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Areas</h3>
+        <ul>
+          <li><a href="index.html#areas">Northwest Indiana</a></li>
+          <li><a href="index.html#areas">Michiana / South Bend</a></li>
+          <li><a href="index.html#areas">Michigan</a></li>
+          <li><a href="index.html#areas">Wisconsin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p>sellmyunits.com is a marketing and referral service. We are not a real estate brokerage, mortgage lender, or law firm, and we do not provide real estate, lending, legal, or tax advice. When you submit a request, your information is shared with independent, licensed professionals and/or investors who may contact you. Any services are provided by those third parties, not by sellmyunits.com. Estimates are for informational purposes only and are not appraisals.</p>
+      <p>&copy; <span data-year></span> sellmyunits.com. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/calc.js" defer></script>
+</body>
+</html>

@@ -139,7 +139,8 @@ const SITE_CONFIG = {
       const data = new FormData(form);
       if (data.get("_gotcha")) return; // bot
       try {
-        utmKeys.concat(["landing_page", "referrer"]).forEach((k) => {
+        utmKeys.concat(["landing_page", "referrer",
+          "calc_type", "calc_noi", "calc_estimate", "calc_summary"]).forEach((k) => {
           const v = sessionStorage.getItem(k);
           if (v) data.set(k, v);
         });
@@ -183,6 +184,14 @@ const SITE_CONFIG = {
       const opt = form.querySelector(`input[data-preset="${CSS.escape(preset)}"]`);
       if (opt) { opt.checked = true; applyBranch(); }
     }
+    // Deep links can also preselect a radio by name, e.g. ?units=Self-storage+facility
+    ["units"].forEach((name) => {
+      const want = params.get(name);
+      if (!want) return;
+      const hit = Array.from(form.querySelectorAll(`input[type=radio][name="${CSS.escape(name)}"]`))
+        .find((r) => r.value === want);
+      if (hit && !hit.disabled) hit.checked = true;
+    });
     show(0);
   }
 
