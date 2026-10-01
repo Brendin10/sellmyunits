@@ -4,7 +4,10 @@
  * Until then, forms run in "demo mode" and just go to the thank-you page.
  */
 const SITE_CONFIG = {
+  // Default endpoint for seller, valuation and buyer leads.
   formEndpoint: "https://formspree.io/f/xyezynnp",
+  // A form can override this with data-endpoint="..." on the <form> tag.
+  // Clear My Units (cleanouts) uses its own: https://formspree.io/f/xgavbrlj
 };
 
 (function () {
@@ -152,7 +155,7 @@ const SITE_CONFIG = {
       const leadType = data.get("lead_type") || "general";
       const thanks = `thank-you.html?type=${encodeURIComponent(leadType)}`;
       const btn = form.querySelector("button[type=submit]");
-      const endpoint = SITE_CONFIG.formEndpoint;
+      const endpoint = form.dataset.endpoint || SITE_CONFIG.formEndpoint;
 
       if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
         console.warn("[sellmyunits.com] Demo mode: set SITE_CONFIG.formEndpoint in assets/js/main.js to receive leads.");
