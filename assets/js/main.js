@@ -205,7 +205,7 @@ const SITE_CONFIG = {
       buyer: "We're matching your criteria with a local professional who works 2–4 unit and apartment deals. Expect a call or text shortly.",
       seller: "A local multifamily specialist will reach out to talk through your building, your timeline, and your options.",
       valuation: "We're lining up a local pro to prepare your value and rent estimate. They may reach out with a few quick questions about the building.",
-      cleanout: "We're passing this to a local cleanout crew who works your area. They'll come back with a price and a date — and if you have photos, text them to (574) 780-9499 to tighten the quote.",
+      cleanout: "This came straight to our cleanout crew. We'll come back with a price and a date — and if you have photos, text them to (574) 780-9499 to tighten the quote.",
     };
     const t = params.get("type");
     if (msgs[t]) thanksMsg.textContent = msgs[t];

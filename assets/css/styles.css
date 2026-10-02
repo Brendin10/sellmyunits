@@ -160,6 +160,7 @@ p { margin: 0 0 1em; }
 .field { margin-bottom: 16px; }
 .field label, .field .label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 6px; }
 .field .hint { font-weight: 400; color: var(--muted); }
+.field p.hint { font-size: .85rem; line-height: 1.45; margin-top: 8px; }
 .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
   width: 100%; font: inherit; font-size: 1rem; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink);
