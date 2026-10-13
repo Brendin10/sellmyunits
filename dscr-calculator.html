@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<title>The DSCR Calculator | What a Financed Buyer Can Pay | sellmyunits.com</title>
+<meta name="description" content="Work out the DSCR on an apartment building, rental houses or a self-storage facility — and the most a financed buyer's lender will let them pay. Free, instant, nothing leaves your browser.">
+<link rel="canonical" href="https://www.sellmyunits.com/dscr-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The DSCR Calculator | sellmyunits.com">
+<meta property="og:description" content="Work out the DSCR on an apartment building, rental houses or a self-storage facility — and the most a financed buyer's lender will let them pay.">
+<meta property="og:url" content="https://www.sellmyunits.com/dscr-calculator.html">
+<meta property="og:image" content="https://www.sellmyunits.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1c3550">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<!-- ANALYTICS: paste Google Analytics / Meta Pixel snippets here (see README) -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Main">
+    <a class="brand" href="index.html"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em><small>Multifamily · IN · MI · WI</small></span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links"><li><a href="sell.html">Sell</a></li><li><a href="value.html">Free Valuation</a></li><li><a href="cap-calculator.html" aria-current="page">Calculators</a></li><li><a href="clear-my-units.html">Clear My Units</a></li><li><a class="btn btn-primary btn-sm" href="value.html">Get My Free Estimate</a></li></ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="section" aria-labelledby="ds-h">
+  <div class="container">
+    <div class="cc-head">
+      <span class="eyebrow">Free tool · Nothing leaves your browser</span>
+      <h1 id="ds-h">The DSCR Calculator</h1>
+      <p class="lede">A financed buyer can't offer more than their lender will lend plus the cash they're putting down. This works out the debt service coverage ratio on a property, the biggest loan that ratio supports, and the ceiling on what a buyer can actually pay you. Apartments, rental houses and self-storage are underwritten differently, so each has its own tab.</p>
+      <nav class="tool-switch" aria-label="Calculators">
+        <a href="cap-calculator.html">The Cap Calculator</a>
+        <a href="dscr-calculator.html" aria-current="page">The DSCR Calculator</a>
+      </nav>
+    </div>
+
+    <div class="cc" id="dscrcalc">
+
+      <div class="cc-tabs" role="tablist" aria-label="Property type">
+        <button type="button" class="cc-tab on" data-type="apt" role="tab" aria-selected="true">Apartments</button>
+        <button type="button" class="cc-tab" data-type="house" role="tab" aria-selected="false">Rental houses</button>
+        <button type="button" class="cc-tab" data-type="storage" role="tab" aria-selected="false">Self-storage</button>
+      </div>
+
+      <div class="cc-body">
+        <div class="cc-inputs">
+
+          <p class="ds-formula" id="dsFormula"></p>
+
+          <div class="cc-block">
+            <h2 class="cc-h3">The income</h2>
+            <div class="cc-field">
+              <label for="dsIncome"><span id="dsIncomeLabel">Gross rent</span> <span class="cc-unit">$ / month</span></label>
+              <input type="number" id="dsIncome" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help" id="dsIncomeHelp"></p>
+            </div>
+            <div class="cc-field">
+              <label for="dsUnits"><span id="dsUnitsLabel">How many units</span></label>
+              <input type="number" id="dsUnits" inputmode="numeric" min="0" step="1" placeholder="0">
+              <p class="cc-help">Only used to show the per-unit number. It doesn't change the ratio.</p>
+            </div>
+          </div>
+
+          <div class="cc-block" id="dsNoiBox">
+            <h2 class="cc-h3">Getting to NOI</h2>
+            <div class="cc-field">
+              <label for="dsLoss"><span id="dsLossLabel">Vacancy</span> <output id="dsLossOut" class="cc-out">6%</output></label>
+              <input type="range" id="dsLoss" min="0" max="40" step="1" value="6">
+              <p class="cc-help" id="dsLossHelp"></p>
+            </div>
+            <div class="cc-field">
+              <label for="dsOther"><span id="dsOtherLabel">Other income</span> <span class="cc-unit">$ / month</span></label>
+              <input type="number" id="dsOther" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help" id="dsOtherHelp"></p>
+            </div>
+            <div class="cc-field">
+              <label for="dsExp">Operating expenses <output id="dsExpOut" class="cc-out">40%</output></label>
+              <input type="range" id="dsExp" min="10" max="70" step="1" value="40">
+              <p class="cc-help" id="dsExpHelp"></p>
+            </div>
+            <p class="cc-warn">Taxes and insurance belong in here, inside the expense ratio. On the commercial side the lender compares NOI to principal and interest only &mdash; putting taxes and insurance in both places double-counts them and makes the ratio look worse than it is.</p>
+          </div>
+
+          <div class="cc-block" id="dsPitiaBox" hidden>
+            <h2 class="cc-h3">Taxes, insurance and dues</h2>
+            <div class="cc-field">
+              <label for="dsTax">Property taxes <span class="cc-unit">$ / year</span></label>
+              <input type="number" id="dsTax" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help">All the houses together. Check the assessor, not last year's escrow statement &mdash; a sale usually resets the assessment.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsIns">Insurance <span class="cc-unit">$ / year</span></label>
+              <input type="number" id="dsIns" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help">Landlord or dwelling-fire policy, all the houses together.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsHoa">Association dues <span class="cc-unit">$ / month</span></label>
+              <input type="number" id="dsHoa" inputmode="decimal" min="0" step="1" placeholder="0">
+              <p class="cc-help">The A in PITIA. Leave it at zero if there's no association.</p>
+            </div>
+            <p class="cc-warn">On one to four units the lender does <strong>not</strong> deduct vacancy, repairs or management. Gross rent over PITIA, and that's it &mdash; which is why a house can clear DSCR and still not cash-flow.</p>
+          </div>
+
+          <div class="cc-block">
+            <h2 class="cc-h3">The loan</h2>
+            <div class="cc-field">
+              <label for="dsPrice">Price or value <span class="cc-unit">$</span></label>
+              <input type="number" id="dsPrice" inputmode="decimal" min="0" step="1000" placeholder="$0">
+              <p class="cc-help">What it's selling for, or what you think it's worth. The LTV comes off this.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsRate">Interest rate <output id="dsRateOut" class="cc-out">7.00%</output></label>
+              <input type="range" id="dsRate" min="4" max="12" step="0.125" value="7">
+              <p class="cc-help">DSCR loans price above owner-occupied mortgages. Move it and watch the ratio &mdash; a point of rate moves the payment more than most people expect.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsAmort">Amortisation</label>
+              <select id="dsAmort">
+                <option value="20">20 years</option>
+                <option value="25">25 years</option>
+                <option value="30" selected>30 years</option>
+                <option value="40">40 years</option>
+              </select>
+              <p class="cc-help">How long the payment is stretched over. Commercial paper often amortises over 25 even when the term is 5 or 10.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsLtv">Loan to value <output id="dsLtvOut" class="cc-out">75%</output></label>
+              <input type="range" id="dsLtv" min="50" max="85" step="1" value="75">
+              <p class="cc-help">The rest is the down payment. Cash-out refinances usually cap about 5 points lower than purchases.</p>
+            </div>
+            <div class="cc-field">
+              <label for="dsMin">Minimum DSCR the lender wants <output id="dsMinOut" class="cc-out">1.25</output></label>
+              <input type="range" id="dsMin" min="0.75" max="1.60" step="0.05" value="1.25">
+              <p class="cc-help" id="dsRatioNote"></p>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="cc-out-panel" id="dsOut" aria-live="polite">
+          <div class="cc-result">
+            <small>DSCR AT THIS PRICE</small>
+            <b id="dsRatio">—</b>
+            <span class="ds-verdict" id="dsVerdict"></span>
+          </div>
+
+          <div class="cc-result cc-value">
+            <small>A FINANCED BUYER CAN PAY UP TO</small>
+            <b id="dsMaxPrice">—</b>
+            <span id="dsMaxNote"></span>
+          </div>
+
+          <div class="ds-bound" id="dsBound" hidden></div>
+
+          <div class="cc-stats" id="dsStats"></div>
+          <div class="cc-break" id="dsBreak"></div>
+          <p class="cc-typenote" id="dsTypeNote"></p>
+
+          <a class="btn btn-primary cc-cta" id="dsHandoff" href="value.html">Get a real estimate &rarr;</a>
+          <p class="cc-ctanote">Sends these numbers along with your request, so nobody has to ask you twice. Free, no obligation.</p>
+        </aside>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="ds-how">
+  <div class="container">
+    <div class="section-head"><h2 id="ds-how">Two formulas, and which one applies to you</h2><p>Lenders don't calculate DSCR the same way on every property. The line is at five units.</p></div>
+    <div class="areas">
+      <div class="area">
+        <h3>One to four units</h3>
+        <p>Residential DSCR: <strong>gross rent &divide; PITIA</strong>. Principal, interest, taxes, insurance and association dues. No vacancy deduction, no repairs, no management fee. It's a generous formula, which is why a house can clear a 1.20 ratio on paper and still lose money in a month with a turnover.</p>
+      </div>
+      <div class="area">
+        <h3>Five units and up</h3>
+        <p>Commercial: <strong>NOI &divide; annual debt service</strong>. Vacancy and every operating expense come out first, then the lender compares what's left to principal and interest only. Taxes and insurance already came out inside NOI, so they don't appear again in the debt service.</p>
+      </div>
+      <div class="area">
+        <h3>Self-storage</h3>
+        <p>Commercial, same NOI formula, but usually a higher bar &mdash; often 1.25 to 1.35 &mdash; and frequently a 25-year amortisation instead of 30. A shorter schedule means a bigger payment and a lower ratio on identical income, so check it before you assume.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:46px"><h2>Why a seller should care</h2></div>
+    <div class="areas">
+      <div class="area">
+        <h3>It's the ceiling on the offer</h3>
+        <p>Most buyers of 2+ unit property borrow. Whatever your building is "worth," a financed buyer's number is their loan plus their cash &mdash; and the ratio caps the loan. Raise the NOI and you raise the loan they can get.</p>
+      </div>
+      <div class="area">
+        <h3>It tells you which lever matters</h3>
+        <p>If the ratio is what's binding, more down payment doesn't help &mdash; income does. If the LTV is binding, the income is fine and the buyer just needs more cash. The calculator says which one you're looking at.</p>
+      </div>
+      <div class="area">
+        <h3>Rates move your price</h3>
+        <p>Slide the interest rate and watch the maximum price move. That's not a market opinion, it's arithmetic &mdash; and it's a large part of why the same building is worth different amounts in different years.</p>
+      </div>
+    </div>
+
+    <p class="cc-disclaim">This calculator is a rule-of-thumb tool, not a loan quote, an appraisal, or lending advice. sellmyunits.com is not a mortgage lender or broker and does not originate, arrange or refer loans. The starting rates, LTVs and minimum ratios are common ranges, not an offer, and every lender and every program underwrites differently &mdash; including how they treat vacancy, reserves, prepayment penalties and interest-only periods, none of which this tool models. Talk to a lender before you make a decision on it.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="color:#fff"><img class="brand-mark" src="assets/img/sellmyunits-icon.svg" alt="" width="34" height="34"><span>sellmyunits<em>.com</em></span></a>
+        <p style="margin-top:14px">Connecting multifamily buyers and owners across Indiana, Michigan and Wisconsin with local professionals who focus on 2+ unit properties.</p>
+        <p><a href="tel:+15747809499">(574) 780-9499</a><br><a href="mailto:forecastplusllc@gmail.com">forecastplusllc@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Get started</h3>
+        <ul>
+          <li><a href="buy.html">Buy a multifamily</a></li>
+          <li><a href="sell.html">Sell your building</a></li>
+          <li><a href="sell.html#portfolio">Sell a portfolio</a></li>
+          <li><a href="value.html">Free value &amp; rent estimate</a></li>
+          <li><a href="cap-calculator.html">The Cap Calculator</a></li>
+          <li><a href="dscr-calculator.html">The DSCR Calculator</a></li>
+          <li><a href="clear-my-units.html">Clear My Units</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Areas</h3>
+        <ul>
+          <li><a href="index.html#areas">Northwest Indiana</a></li>
+          <li><a href="index.html#areas">Michiana / South Bend</a></li>
+          <li><a href="index.html#areas">Michigan</a></li>
+          <li><a href="index.html#areas">Wisconsin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p>sellmyunits.com is a marketing and referral service for real estate, and performs cleanout and junk removal work directly. We are not a real estate brokerage, mortgage lender, or law firm, and we do not provide real estate, lending, legal, or tax advice. When you submit a buying, selling, or valuation request, your information is shared with independent, licensed professionals and/or investors who may contact you, and those services are provided by those third parties, not by sellmyunits.com. Cleanouts requested through Clear My Units are carried out by sellmyunits.com; when a job has to happen sooner than our own schedule allows we may assign it to a partner crew, and we tell you when we do. Estimates are for informational purposes only and are not appraisals.</p>
+      <p>&copy; <span data-year></span> sellmyunits.com. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/dscr.js" defer></script>
+</body>
+</html>

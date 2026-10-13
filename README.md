@@ -10,10 +10,43 @@ A static lead-generation site for duplex and multifamily (2+ unit) buyers, selle
 | `buy.html` | Buyers of 2+ unit properties | `buyer` |
 | `sell.html` | Owners selling one building, several houses, or a portfolio | `seller` |
 | `value.html` | Free value and rent estimate (strongest owner magnet) | `valuation` |
+| `cap-calculator.html` | The Cap Calculator — NOI, value and cap rate, by property type | — (hands off to `sell.html`) |
+| `dscr-calculator.html` | The DSCR Calculator — debt coverage and what a financed buyer can pay | — (hands off to `value.html`) |
+| `clear-my-units.html` | Cleanout and junk removal requests | `cleanout` |
 | `thank-you.html` | Confirmation page, personalized by lead type | — |
 | `privacy.html`, `terms.html` | Legal templates (**have an attorney review**) | — |
 
 Every form also sends the page URL, a timestamp, the consent text the person agreed to, and any UTM, gclid, or fbclid values from the visit, so you can see which ads produce leads.
+
+## The calculators
+
+Two free tools, both pure client-side arithmetic — nothing is sent anywhere until the visitor
+clicks through to a form. Both live behind the single **Calculators** nav item and cross-link
+to each other with the `.tool-switch` control.
+
+| File | Script | What it answers |
+|---|---|---|
+| `cap-calculator.html` | `assets/js/calc.js` | What's the NOI, and what's it worth at a given cap rate? |
+| `dscr-calculator.html` | `assets/js/dscr.js` | Does it clear the lender's ratio, and what can a financed buyer pay? |
+
+Each script holds a `TYPES` object with one entry per tab (`apt`, `house`, `storage`). Changing a
+default — a starting rate, an expense ratio, a minimum DSCR — means editing that object and nothing
+else. A link can preselect a tab: `dscr-calculator.html?type=storage`.
+
+**The DSCR calculator deliberately uses two different formulas**, because lenders do:
+
+- **1–4 units** (the *Rental houses* tab) — `gross rent ÷ PITIA`. No vacancy, no operating
+  expenses. Principal, interest, taxes, insurance and association dues.
+- **5+ units and commercial** (*Apartments*, *Self-storage*) — `NOI ÷ annual debt service`, where
+  debt service is principal and interest only. Taxes and insurance already came out inside NOI, so
+  counting them again in the payment would double-count them.
+
+Both tools write a plain-text summary into `sessionStorage` (`calc_type`, `calc_noi`,
+`calc_estimate`, `calc_summary`), and `main.js` attaches those four keys to whatever lead form the
+visitor submits next. That's how the numbers reach your inbox without the visitor retyping them.
+
+The DSCR page carries its own disclaimer stating that sellmyunits.com is not a lender or broker and
+does not originate, arrange or refer loans. Leave that in.
 
 ## 1. Connect the forms (Formspree)
 
