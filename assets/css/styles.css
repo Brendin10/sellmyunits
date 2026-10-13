@@ -54,7 +54,7 @@ p { margin: 0 0 1em; }
 .site-footer .brand em { color: #f2a384; }
 .brand small { display: block; font-weight: 500; font-size: .72rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
 .nav-links { display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
-.nav-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: .95rem; }
+.nav-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: .95rem; white-space: nowrap; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--brick-dark); }
 .nav-links a.btn-primary, .nav-links a.btn-primary:hover { color: #fff; }
 .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; cursor: pointer; }
@@ -216,12 +216,16 @@ input:focus, select:focus, textarea:focus { border-color: var(--focus); }
   .form-card { position: static; }
   .hero-art { max-width: 520px; }
 }
-@media (max-width: 760px) {
+/* Six nav items need ~1050px laid out in a row, so the menu collapses earlier
+   than the rest of the mobile layout. Keep these two breakpoints separate. */
+@media (max-width: 1040px) {
   .nav-toggle { display: block; }
-  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
+  .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; z-index: 40; box-shadow: var(--shadow); }
   .nav-links.open { display: flex; }
   .nav-links li a { display: block; padding: 12px 0; }
   .nav-links .btn { margin-top: 8px; width: 100%; }
+}
+@media (max-width: 760px) {
   .grid-3, .grid-2, .areas, .footer-grid { grid-template-columns: 1fr; }
   .section { padding: 52px 0; }
   .hero { padding: 40px 0; }
