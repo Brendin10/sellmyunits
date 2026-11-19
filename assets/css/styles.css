@@ -216,9 +216,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--focus); }
   .form-card { position: static; }
   .hero-art { max-width: 520px; }
 }
-/* Six nav items need ~1050px laid out in a row, so the menu collapses earlier
-   than the rest of the mobile layout. Keep these two breakpoints separate. */
-@media (max-width: 1040px) {
+/* Seven nav items need ~1180px laid out in a row, so the menu collapses earlier
+   than the rest of the mobile layout. Keep these two breakpoints separate.
+   Add or rename a nav item and this number has to move with it. */
+@media (max-width: 1220px) {
   .nav-toggle { display: block; }
   .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; z-index: 40; box-shadow: var(--shadow); }
   .nav-links.open { display: flex; }
@@ -335,3 +336,131 @@ input:focus, select:focus, textarea:focus { border-color: var(--focus); }
   .cc-inputs, .cc-out-panel { padding: 18px; }
   .cc-line { grid-template-columns: 1fr 104px; }
 }
+
+/* ---------- Unit Turnovers popup ---------- */
+body.tmodal-open { overflow: hidden; }
+.tmodal { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.tmodal[hidden] { display: none; }
+.tmodal-back { position: absolute; inset: 0; background: rgba(15, 33, 51, .62); backdrop-filter: blur(3px); }
+.tmodal-box {
+  position: relative; width: 92vw; max-width: 1100px; height: 90vh;
+  background: var(--paper); border-radius: 20px; box-shadow: 0 30px 80px rgba(15, 33, 51, .4);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: tpop .18s cubic-bezier(.2, .9, .3, 1);
+}
+@keyframes tpop { from { opacity: 0; transform: translateY(14px) scale(.985); } }
+.tmodal-x {
+  position: absolute; top: 14px; right: 16px; z-index: 3;
+  width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+  background: #fff; color: var(--ink); font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.tmodal-x:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.tview { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+.tview[hidden] { display: none; }
+
+.tmodal-head { padding: 30px 34px 18px; border-bottom: 1px solid var(--line); background: #fff; }
+.tmodal-head h2 { margin: 6px 0 8px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.tmodal-head h2:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.tmodal-head .lede { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
+.tback {
+  display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: 600 .9rem var(--sans); color: var(--brick-dark);
+}
+.tback:hover { text-decoration: underline; }
+
+.tmodal-body { padding: 26px 34px 30px; overflow-y: auto; flex: 1; min-height: 0; }
+.tmodal-body > p { max-width: 74ch; color: var(--ink-soft); }
+.tnote {
+  background: var(--sage); border-left: 5px solid var(--brick); border-radius: 0 12px 12px 0;
+  padding: 14px 18px; font-weight: 600; color: var(--ink) !important; max-width: none !important;
+}
+.tlevels-h { margin: 28px 0 14px; font-size: 1.3rem; }
+.tlevels { display: grid; gap: 12px; }
+.tlevel { display: grid; grid-template-columns: 52px 1fr; gap: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+.tlevel.is-deep { border-color: var(--brick); box-shadow: 0 8px 24px rgba(180, 80, 47, .12); }
+.tlevel-n {
+  width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: #fff;
+  display: grid; place-items: center; font: 700 1.5rem var(--serif);
+}
+.tlevel.is-deep .tlevel-n { background: var(--brick); }
+.tlevel-b h4 { margin: 0 0 6px; font: 600 1.2rem var(--serif); }
+.tlevel-b h4 span { display: block; font: 500 .85rem var(--sans); color: var(--muted); margin-top: 3px; }
+.tlevel-b p { margin: 0 0 10px; font-size: .95rem; color: var(--ink-soft); }
+.tlevel-b ul { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 2px; padding: 0; }
+.tlevel-b li { background: var(--sage); border-radius: 999px; padding: 5px 11px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); }
+.tlevel-b .btn { margin-top: 12px; }
+
+.tfacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+.tfacts > div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.tfacts strong { display: block; font-size: .98rem; margin-bottom: 5px; }
+.tfacts span { display: block; font-size: .85rem; line-height: 1.45; color: var(--muted); }
+
+.tmodal-foot {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+  padding: 16px 34px; border-top: 1px solid var(--line); background: #fff;
+}
+.tphone { font-size: .92rem; color: var(--muted); }
+.tcount { font-weight: 600; font-size: .92rem; color: var(--muted); margin-right: auto; }
+.tcount.on { color: var(--brick-dark); }
+
+.tgroup { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+.tgroup legend {
+  padding: 0; margin-bottom: 10px; font: 700 .8rem var(--sans);
+  text-transform: uppercase; letter-spacing: .08em; color: var(--brick-dark);
+}
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.toption { position: relative; }
+.toption input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.toption span {
+  display: block; background: var(--card); border: 1.5px solid var(--line); border-radius: 10px;
+  padding: 11px 14px; font-size: .9rem; font-weight: 500; cursor: pointer; transition: border-color .12s, background .12s;
+}
+.toption span::before {
+  content: ""; display: inline-block; width: 15px; height: 15px; margin-right: 9px;
+  vertical-align: -2px; border: 1.5px solid var(--line); border-radius: 4px; background: #fff;
+}
+.toption input:hover + span { border-color: var(--muted); }
+.toption input:checked + span { border-color: var(--brick); background: #fdf3ef; font-weight: 600; }
+.toption input:checked + span::before {
+  background: var(--brick) no-repeat center/10px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='m4 13 5 5L20 6'/%3E%3C/svg%3E");
+  border-color: var(--brick);
+}
+.toption input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  .tfacts { grid-template-columns: 1fr; }
+  .tmodal-head { padding: 24px 22px 16px; }
+  .tmodal-body { padding: 22px 22px 26px; }
+  .tmodal-foot { padding: 12px 22px; gap: 10px; }
+  .tmodal-foot .btn-primary { flex: 1 1 100%; }
+  .tmodal-foot .btn-ghost { flex: 0 0 auto; padding: 9px 16px; font-size: .9rem; }
+  .tphone { flex: 1 1 auto; margin-right: 0; text-align: right; }
+  .tcount { flex: 1 1 100%; margin-right: 0; }
+}
+@media (max-width: 560px) {
+  .tmodal { padding: 0; }
+  .tmodal-box { width: 100vw; max-width: none; height: 100dvh; border-radius: 0; }
+  .tlevel { grid-template-columns: 1fr; gap: 12px; padding: 18px; }
+  .tlevel-n { width: 44px; height: 44px; font-size: 1.25rem; }
+  .tgrid { grid-template-columns: 1fr; }
+}
+
+/* The scope summary carried in from the popup */
+.scope-carry {
+  background: var(--sage); border: 1px solid #cddcc9; border-radius: 12px;
+  padding: 14px 16px; margin-bottom: 18px; font-size: .9rem;
+}
+.scope-carry strong { display: block; margin-bottom: 5px; }
+.scope-carry pre { margin: 0; white-space: pre-wrap; font: inherit; color: var(--ink-soft); }
+.scope-carry button {
+  background: none; border: 0; padding: 0; margin-top: 8px; cursor: pointer;
+  font: 600 .85rem var(--sans); color: var(--brick-dark); text-decoration: underline;
+}
+
+/* Inline text button that reads like a link */
+.linkish {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; font-weight: 600; color: var(--brick-dark); text-decoration: underline;
+}
+.linkish:hover { color: var(--brick); }
