@@ -116,7 +116,7 @@
             '<h3 class="tlevels-h">Three levels, depending on what it needs</h3>' +
             '<div class="tlevels">' + levels + '</div>' +
             '<div class="tfacts">' +
-              '<div><strong>Our own crew</strong><span>Not a referral. For a rush date we may bring in a vetted partner crew &mdash; and we say so when we quote it.</span></div>' +
+              '<div><strong>Our own crew</strong><span>Not a referral. Two exceptions, said up front: pre-1978 paint work goes to a lead-certified firm, and a rush date we can't hit ourselves.</span></div>' +
               '<div><strong>Priced per job</strong><span>Size, condition, access and scope decide it. Photos get you a real number instead of a range.</span></div>' +
               '<div><strong>One unit or the whole building</strong><span>Single turnovers, several at once, or a building you just took over.</span></div>' +
             '</div>' +
