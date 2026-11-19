@@ -7,7 +7,8 @@ const SITE_CONFIG = {
   // Default endpoint for seller, valuation and buyer leads.
   formEndpoint: "https://formspree.io/f/xyezynnp",
   // A form can override this with data-endpoint="..." on the <form> tag.
-  // Clear My Units (cleanouts) uses its own: https://formspree.io/f/xgavbrlj
+  // Clear My Units (cleanouts) and unit turnovers: https://formspree.io/f/xgavbrlj
+  // Contractor applications:                      https://formspree.io/f/myewpane
 };
 
 (function () {

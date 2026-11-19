@@ -78,11 +78,9 @@
 <div class="progress" aria-hidden="true"><span></span><span></span><span></span></div>
 <p class="step-label">Step 1 of 3</p>
 
-<!-- SETUP: a dedicated Formspree form for contractor applications keeps these
-     out of your customer lead inbox. Create one, then replace the
-     data-endpoint below with its URL. Until then these arrive in the main inbox
-     tagged lead_type=contractor. -->
-<form class="lead-form" novalidate data-endpoint="https://formspree.io/f/xyezynnp">
+<!-- Contractor applications have their own Formspree inbox, separate from
+     customer leads. -->
+<form class="lead-form" novalidate data-endpoint="https://formspree.io/f/myewpane">
 <input type="hidden" name="lead_type" value="contractor">
 <input type="hidden" name="_subject" value="New contractor application — sellmyunits.com">
 <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
